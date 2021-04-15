@@ -1,6 +1,6 @@
 package org.brody.leetcode;
 
-import org.brody.base.ListNode;
+import org.brody.leetcode.base.ListNode;
 
 /**
  * 25. K个一组翻转链表
@@ -30,60 +30,60 @@ import org.brody.base.ListNode;
  * @author CYF
  */
 public class $0025_ReverseNodesInKGroup {
-	public ListNode reverseKGroup(ListNode head, int k) {
-		//分为三部分，已翻转，待翻转，未翻转
-		//初始需要两个变量pre和end，pre表示待翻转链表的前驱，end表示待翻转链表的末尾。
+    public ListNode reverseKGroup(ListNode head, int k) {
+        //分为三部分，已翻转，待翻转，未翻转
+        //初始需要两个变量pre和end，pre表示待翻转链表的前驱，end表示待翻转链表的末尾。
 
-		ListNode dummy = new ListNode(0);
-		dummy.next = head;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
 
-		ListNode pre = dummy;
-		ListNode end = dummy;
+        ListNode pre = dummy;
+        ListNode end = dummy;
 
-		//当end的next不为空时，表示需要翻转
-		while (end.next != null) {
-			//end指向当前第k个结点
-			for (int i = 0; i < k && end != null; i++) {
-				end = end.next;
-			}
-			//如果此时end为null，说明未翻转区域小于k，则直接跳出循环，直接返回。
-			if (end == null) {
-				break;
-			}
-			//start指向待翻转的头结点
-			ListNode start = pre.next;
-			//next指向下一个待翻转的头结点
-			ListNode next = end.next;
-			//把待翻转和未翻转隔离开
-			end.next = null;
-			//已翻转的末尾指向待翻转翻转之后的头结点，此时头结点为待翻转之前的end
-			pre.next = reverse(start);
-			//此时start结点为待翻转的尾结点
-			start.next = next;
+        //当end的next不为空时，表示需要翻转
+        while (end.next != null) {
+            //end指向当前第k个结点
+            for (int i = 0; i < k && end != null; i++) {
+                end = end.next;
+            }
+            //如果此时end为null，说明未翻转区域小于k，则直接跳出循环，直接返回。
+            if (end == null) {
+                break;
+            }
+            //start指向待翻转的头结点
+            ListNode start = pre.next;
+            //next指向下一个待翻转的头结点
+            ListNode next = end.next;
+            //把待翻转和未翻转隔离开
+            end.next = null;
+            //已翻转的末尾指向待翻转翻转之后的头结点，此时头结点为待翻转之前的end
+            pre.next = reverse(start);
+            //此时start结点为待翻转的尾结点
+            start.next = next;
 
-			//更新pre和end的位置
-			pre = start;
-			end = pre;
+            //更新pre和end的位置
+            pre = start;
+            end = pre;
 
-		}
-		return dummy.next;
-	}
+        }
+        return dummy.next;
+    }
 
-	/**
-	 * 翻转待翻转链表
-	 */
-	private ListNode reverse(ListNode head) {
-		//设置两个指针
-		ListNode pre = null;
-		ListNode cur = head;
-		//因为已经把待翻转和未翻转隔离开，所以用null作为循环结束条件
-		while (cur != null) {
-			//下一个要翻转的节点
-			ListNode next = cur.next;
-			cur.next = pre;
-			pre = cur;
-			cur = next;
-		}
-		return pre;
-	}
+    /**
+     * 翻转待翻转链表
+     */
+    private ListNode reverse(ListNode head) {
+        //设置两个指针
+        ListNode pre = null;
+        ListNode cur = head;
+        //因为已经把待翻转和未翻转隔离开，所以用null作为循环结束条件
+        while (cur != null) {
+            //下一个要翻转的节点
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
 }

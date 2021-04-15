@@ -1,5 +1,6 @@
 package org.brody.leetcode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,16 +20,22 @@ import java.util.Map;
  * @author CYF
  */
 public class $0001_TwoSum {
-	public static int[] twoSum(int[] nums, int target) {
-		//采用hashMap存储, nums[i]为key, i为value, 遍历hashMap, 如果找到key为target-nums[i], 则返回target-nums[i]的value, 和当前i的值
-		Map<Integer, Integer> hash = new HashMap<>(16);
-		for (int i = 0; i < nums.length; i++) {
-			if (hash.containsKey(target - nums[i])) {
-				return new int[]{hash.get(target - nums[i]), i};
-			}
+    public static int[] twoSum(int[] nums, int target) {
+        //采用hashMap存储, nums[i]为key, i为value, 遍历hashMap, 如果找到key为target-nums[i], 则返回target-nums[i]的value, 和当前i的值
+        Map<Integer, Integer> hash = new HashMap<>(16);
+        for (int i = 0; i < nums.length; i++) {
+            if (hash.containsKey(target - nums[i])) {
+                return new int[]{hash.get(target - nums[i]), i};
+            }
+            hash.put(nums[i], i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
 
-			hash.put(nums[i], i);
-		}
-		throw new IllegalArgumentException("No two sum solution");
-	}
+    public static void main(String[] args) {
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        int[] ints = twoSum(nums, target);
+        System.out.println(Arrays.toString(ints));
+    }
 }

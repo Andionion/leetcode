@@ -1,6 +1,6 @@
 package org.brody.leetcode;
 
-import org.brody.base.ListNode;
+import org.brody.leetcode.base.ListNode;
 
 /**
  * 19. 删除链表的倒数第 N 个节点
@@ -19,27 +19,27 @@ import org.brody.base.ListNode;
  * @author cyf
  */
 public class $0019_RemoveNthNodeFromEndOfList {
-	public static ListNode removeNthFromEnd(ListNode head, int n) {
-		//设置一个头结点, 指向 head
-		//设置两个指针 start 和 end, start 首先移动 n, 然后start 和 end 一起向后移动
-		//当 start 移动到尾端的时候, 此时 end 恰好指在倒数第 n 个节点
-		//因为要删除节点,所以必须要移动到该节点的前面才可以删除, 所以循环结束条件是 start.next!=null
-		ListNode pre = new ListNode(0);
-		pre.next = head;
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        //设置一个头结点, 指向 head
+        //设置两个指针 start 和 end, start 首先移动 n, 然后start 和 end 一起向后移动
+        //当 start 移动到尾端的时候, 此时 end 恰好指在倒数第 n 个节点
+        //因为要删除节点,所以必须要移动到该节点的前面才可以删除, 所以循环结束条件是 start.next!=null
+        ListNode pre = new ListNode(0);
+        pre.next = head;
 
-		ListNode start = pre, end = pre;
+        ListNode start = pre, end = pre;
 
-		while (n != 0) {
-			start = start.next;
-			n--;
-		}
+        while (n != 0) {
+            start = start.next;
+            n--;
+        }
 
-		while (start.next != null) {
-			start = start.next;
-			end = end.next;
-		}
-		end.next = end.next.next;
+        while (start.next != null) {
+            start = start.next;
+            end = end.next;
+        }
+        end.next = end.next.next;
 
-		return pre.next;
-	}
+        return pre.next;
+    }
 }
