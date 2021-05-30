@@ -36,40 +36,41 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0006_ZigZagConversion {
-	public static String convert(String s, int numRows) {
-		//设置两个指针，一个down，一个loc，down表示是否向下，loc表示向右
-		if (numRows == 1) {
-			return s;
-		}
 
-		//防止空指针异常
-		int len = Math.min(s.length(), numRows);
+    public static String convert(String s, int numRows) {
+        //设置两个指针，一个down，一个loc，down表示是否向下，loc表示向右
+        if (numRows == 1) {
+            return s;
+        }
 
-		String[] rows = new String[len];
-		for (int i = 0; i < len; i++) {
-			rows[i] = "";
-		}
+        //防止空指针异常
+        int len = Math.min(s.length(), numRows);
 
-		int loc = 0;
-		boolean down = false;
+        String[] rows = new String[len];
+        for (int i = 0; i < len; i++) {
+            rows[i] = "";
+        }
 
-		for (int i = 0; i < s.length(); i++) {
-			rows[loc] += s.substring(i, i + 1);
-			//loc为0表示向下走，loc为numRows-1表示向右走
-			if (loc == 0 || loc == numRows - 1) {
-				down = !down;
-			}
-			//down为true，表示正在往下走，为false，表示正在向右走
-			loc += down ? 1 : -1;
-		}
+        int loc = 0;
+        boolean down = false;
 
-		StringBuilder ans = new StringBuilder();
-		for (String row : rows) {
-			ans.append(row);
-		}
+        for (int i = 0; i < s.length(); i++) {
+            rows[loc] += s.substring(i, i + 1);
+            //loc为0表示向下走，loc为numRows-1表示向右走
+            if (loc == 0 || loc == numRows - 1) {
+                down = !down;
+            }
+            //down为true，表示正在往下走，为false，表示正在向右走
+            loc += down ? 1 : -1;
+        }
 
-		return ans.toString();
+        StringBuilder ans = new StringBuilder();
+        for (String row : rows) {
+            ans.append(row);
+        }
 
-	}
+        return ans.toString();
+
+    }
 
 }

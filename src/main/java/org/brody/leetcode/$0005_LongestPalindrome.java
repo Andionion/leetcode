@@ -21,6 +21,14 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0005_LongestPalindrome {
+
+
+    public static void main(String[] args) {
+        String str = "adhfagadhfdsgsdsdsaasdfwe";
+        String s = longestPalindrome(str);
+        System.out.println(s);
+    }
+
     public static String longestPalindrome(String s) {
         // 回文串一定是对称的，所以我们可以每次循环选择一个中心，进行左右扩展，判断左右字符是否相等即可
         if (s == null || s.length() < 1) {
@@ -51,6 +59,4 @@ public class $0005_LongestPalindrome {
         }
         return right - left - 1;
     }
-
-
 }
