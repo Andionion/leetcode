@@ -19,7 +19,7 @@ package org.brody.leetcode;
  * 输出: 21
  * 注意:
  * <p>
- * 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
+ * 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为[2<sup>31</sup>, 2<sup>31</sup>-1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
  * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/reverse-integer
@@ -28,18 +28,25 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0007_ReverseInteger {
-	public int reverse(int x) {
-		int res = 0;
-		while (x != 0) {
-			int pop = x % 10;
-			boolean isOverMaxValue = res > Integer.MAX_VALUE / 10 || res == Integer.MAX_VALUE / 10 && pop > 7;
-			boolean isFlowMinValue = res < Integer.MIN_VALUE / 10 || res == Integer.MIN_VALUE / 10 && pop < -8;
-			if (isOverMaxValue || isFlowMinValue) {
-				return 0;
-			}
-			res = res * 10 + pop;
-			x /= 10;
-		}
-		return res;
-	}
+
+    public static void main(String[] args) {
+        int reverse = reverse(-2147483648);
+        System.out.println(reverse);
+    }
+
+    public static int reverse(int x) {
+        int result = 0;
+        int pop;
+        while (x != 0) {
+            pop = x % 10;
+            boolean isOverMaxInteger = result > Integer.MAX_VALUE / 10 || result == Integer.MAX_VALUE / 10 && pop > 7;
+            boolean isLowerMinInteger = result < Integer.MIN_VALUE / 10 || result == Integer.MIN_VALUE / 10 && pop < -8;
+            if (isLowerMinInteger || isOverMaxInteger) {
+                return 0;
+            }
+            result = result * 10 + pop;
+            x /= 10;
+        }
+        return result;
+    }
 }
