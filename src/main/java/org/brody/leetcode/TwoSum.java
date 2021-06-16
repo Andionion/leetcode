@@ -19,7 +19,7 @@ import java.util.Map;
  *
  * @author CYF
  */
-public class $0001_TwoSum {
+public class TwoSum {
     public static int[] twoSum(int[] nums, int target) {
         //采用hashMap存储, nums[i]为key, i为value, 遍历hashMap, 如果找到key为target-nums[i], 则返回target-nums[i]的value, 和当前i的值
         Map<Integer, Integer> hash = new HashMap<>(16);
