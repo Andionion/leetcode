@@ -27,7 +27,7 @@ package org.brody.leetcode;
  *
  * @author CYF
  */
-public class $0007_ReverseInteger {
+public class ReverseInteger {
 
     public static void main(String[] args) {
         int reverse = reverse(-2147483648);

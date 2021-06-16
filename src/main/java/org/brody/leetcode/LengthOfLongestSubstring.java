@@ -32,7 +32,7 @@ import java.util.Map;
  *
  * @author CYF
  */
-public class $0003_LengthOfLongestSubstring {
+public class LengthOfLongestSubstring {
     public static int lengthOfLongestSubstring(String s) {
         int n = s.length();
         int ans = 0;

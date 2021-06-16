@@ -35,7 +35,7 @@ package org.brody.leetcode;
  *
  * @author CYF
  */
-public class $0006_ZigZagConversion {
+public class ZigZagConversion {
 
     public static String convert(String s, int numRows) {
         //设置两个指针，一个down，一个loc，down表示是否向下，loc表示向右

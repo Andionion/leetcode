@@ -23,7 +23,7 @@ package org.brody.leetcode;
  *
  * @author CYF
  */
-public class $0004_FindMedianSortedArrays {
+public class FindMedianSortedArrays {
 
     public static void main(String[] args) {
         int[] nums1 = {1, 3, 5, 6};
@@ -35,10 +35,6 @@ public class $0004_FindMedianSortedArrays {
 
     /**
      * 基本思路是比较两个数组中第k小的数, 小的那组的前k/2个数可以直接排除, 一直到k=1或者其中某个数组排除完.
-     *
-     * @param nums1
-     * @param nums2
-     * @return
      */
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int n = nums1.length;
@@ -55,7 +51,6 @@ public class $0004_FindMedianSortedArrays {
      * @param nums2 数组 2
      * @param j     nums2 的起始位置
      * @param k     中位数
-     * @return
      */
     private static int getKth(int[] nums1, int i, int[] nums2, int j, int k) {
         if (i >= nums1.length) {

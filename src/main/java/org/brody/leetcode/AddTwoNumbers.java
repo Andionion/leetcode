@@ -22,7 +22,7 @@ import org.brody.leetcode.base.ListNode;
  *
  * @author CYF
  */
-public class $0002_AddTwoNumbers {
+public class AddTwoNumbers {
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         //将两个链表看成是相同长度的进行遍历, 如果链表较短, 则在前面补0, 如 987 + 23 = 987 + 023 = 1010;
         //每一位计算的同时要考虑上一位的进位问题, 而当前计算结束后同样需要更新进位值
@@ -62,11 +62,9 @@ public class $0002_AddTwoNumbers {
         ListNode listNode1 = new ListNode(7);
         ListNode listNode11 = new ListNode(8);
         listNode1.next = listNode11;
-        ListNode listNode111 = new ListNode(9);
-        listNode11.next = listNode111;
+        listNode11.next = new ListNode(9);
         ListNode listNode2 = new ListNode(3);
-        ListNode listNode22 = new ListNode(2);
-        listNode2.next = listNode22;
+        listNode2.next = new ListNode(2);
 
         ListNode listNode = addTwoNumbers(listNode1, listNode2);
         while (null != listNode) {

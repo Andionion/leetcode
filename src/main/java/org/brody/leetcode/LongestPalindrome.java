@@ -20,7 +20,7 @@ package org.brody.leetcode;
  *
  * @author CYF
  */
-public class $0005_LongestPalindrome {
+public class LongestPalindrome {
 
 
     public static void main(String[] args) {

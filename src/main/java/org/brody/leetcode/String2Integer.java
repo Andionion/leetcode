@@ -54,70 +54,70 @@ package org.brody.leetcode;
  *
  * @author cyf
  */
-public class $0008_String2Integer {
-	public static int myAtoi(String str) {
-		str = str.trim();
-		// 符号位
-		boolean sign = false;
-		//最终转换出来的,只有数字的字符串
-		String result = null;
-		//只有当字符串不为空时才进行转换
-		if (str.isEmpty()) {
-			return 0;
-		}
-		//判断第一个字符是否是+-或者数字
-		char aChar = str.charAt(0);
-		if (aChar == '+' || aChar == '-') {
-			sign = aChar == '-';
-			//判断数字开始的索引
-			for (int i = 1; i < str.length(); i++) {
-				if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-					result = str.substring(1, i + 1);
-				} else {
-					break;
-				}
-			}
-		} else if (aChar >= '0' && aChar <= '9') {
-			//这时候循环只要数字
-			for (int i = 0; i < str.length(); i++) {
-				if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-					result = str.substring(0, i + 1);
-				} else {
-					break;
-				}
-			}
-		}
+public class String2Integer {
+    public static int myAtoi(String str) {
+        str = str.trim();
+        // 符号位
+        boolean sign = false;
+        //最终转换出来的,只有数字的字符串
+        String result = null;
+        //只有当字符串不为空时才进行转换
+        if (str.isEmpty()) {
+            return 0;
+        }
+        //判断第一个字符是否是+-或者数字
+        char aChar = str.charAt(0);
+        if (aChar == '+' || aChar == '-') {
+            sign = aChar == '-';
+            //判断数字开始的索引
+            for (int i = 1; i < str.length(); i++) {
+                if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+                    result = str.substring(1, i + 1);
+                } else {
+                    break;
+                }
+            }
+        } else if (aChar >= '0' && aChar <= '9') {
+            //这时候循环只要数字
+            for (int i = 0; i < str.length(); i++) {
+                if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+                    result = str.substring(0, i + 1);
+                } else {
+                    break;
+                }
+            }
+        }
 
 
-		//判断最终字符串是否为空,或者只有一个正负号
-		if (result == null || "+".equals(result) || "-".equals(result)) {
-			return 0;
-		}
+        //判断最终字符串是否为空,或者只有一个正负号
+        if (result == null || "+".equals(result) || "-".equals(result)) {
+            return 0;
+        }
 
-		int num = 0;
-		for (int i = 0; i < result.length(); i++) {
-			int cur = result.charAt(i) - '0';
-			if (sign) {
-				if (num < Integer.MIN_VALUE / 10 || num == Integer.MIN_VALUE / 10 && cur > 8) {
-					return Integer.MIN_VALUE;
-				}
-				num = num * 10 - cur;
-			} else {
-				if (num > Integer.MAX_VALUE / 10 || num == Integer.MAX_VALUE / 10 && cur > 7) {
-					return Integer.MAX_VALUE;
-				}
-				num = num * 10 + cur;
-			}
-		}
+        int num = 0;
+        for (int i = 0; i < result.length(); i++) {
+            int cur = result.charAt(i) - '0';
+            if (sign) {
+                if (num < Integer.MIN_VALUE / 10 || num == Integer.MIN_VALUE / 10 && cur > 8) {
+                    return Integer.MIN_VALUE;
+                }
+                num = num * 10 - cur;
+            } else {
+                if (num > Integer.MAX_VALUE / 10 || num == Integer.MAX_VALUE / 10 && cur > 7) {
+                    return Integer.MAX_VALUE;
+                }
+                num = num * 10 + cur;
+            }
+        }
 
-		return num;
-	}
+        return num;
+    }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		int i = $0008_String2Integer.myAtoi("words 4432");
-		System.out.println(i);
+        int i = String2Integer.myAtoi("words 4432");
+        System.out.println(i);
 
 
-	}
+    }
 }
