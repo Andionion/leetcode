@@ -25,26 +25,26 @@ import java.util.Deque;
  * @author CYF
  */
 public class $0032_LongestValidParentheses {
-	/**
-	 * 栈法
-	 */
-	public int longestValidParentheses(String s) {
-		//使用栈，当碰到“（”时，将下标压入栈，当碰到“）”时，弹出栈顶元素，然后将此时的“）”的下标与当前的栈顶的数字作差，更新max
-		int res = 0;
-		Deque<Integer> stack = new ArrayDeque<>();
-		stack.push(-1);
-		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) == '(') {
-				stack.push(i);
-			} else {
-				stack.pop();
-				if (stack.isEmpty()) {
-					stack.push(i);
-				} else {
-					res = Math.max(res, i - stack.peek());
-				}
-			}
-		}
-		return res;
-	}
+    /**
+     * 栈法
+     */
+    public int longestValidParentheses(String s) {
+        //使用栈，当碰到“（”时，将下标压入栈，当碰到“）”时，弹出栈顶元素，然后将此时的“）”的下标与当前的栈顶的数字作差，更新max
+        int res = 0;
+        Deque<Integer> stack = new ArrayDeque<>();
+        stack.push(-1);
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(i);
+            } else {
+                stack.pop();
+                if (stack.isEmpty()) {
+                    stack.push(i);
+                } else {
+                    res = Math.max(res, i - stack.peek());
+                }
+            }
+        }
+        return res;
+    }
 }

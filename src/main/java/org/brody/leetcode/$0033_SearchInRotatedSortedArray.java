@@ -28,37 +28,37 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0033_SearchInRotatedSortedArray {
-	public int search(int[] nums, int target) {
-		//旋转之后的数组可以分为两类，
-		// 一类是nums[start] <= nums[mid]，此时前半部分有序。因此如果 nums[start] <= target < nums[mid]。则在前半部分找，否则去后半部分找
-		//一类是nums[start] > nums[mid]，此时后半部分有序。如果nums[mid] <target <= nums[end]。在后半部分找，否则去前半部分找
-		if (nums == null || nums.length == 0) {
-			return -1;
-		}
-		int start = 0;
-		int end = nums.length - 1;
-		int mid;
-		while (start <= end) {
-			mid = (start + end) / 2;
-			if (nums[mid] == target) {
-				return mid;
-			}
-			//前半部分有序，注意此处用小于等于
-			if (nums[start] <= nums[mid]) {
-				//target在前半部分
-				if (nums[start] <= target && target < nums[mid]) {
-					end = mid - 1;
-				} else {
-					start = mid + 1;
-				}
-			} else {
-				if (nums[mid] < target && target <= nums[end]) {
-					start = mid + 1;
-				} else {
-					end = mid - 1;
-				}
-			}
-		}
-		return -1;
-	}
+    public int search(int[] nums, int target) {
+        //旋转之后的数组可以分为两类，
+        // 一类是nums[start] <= nums[mid]，此时前半部分有序。因此如果 nums[start] <= target < nums[mid]。则在前半部分找，否则去后半部分找
+        //一类是nums[start] > nums[mid]，此时后半部分有序。如果nums[mid] <target <= nums[end]。在后半部分找，否则去前半部分找
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int start = 0;
+        int end = nums.length - 1;
+        int mid;
+        while (start <= end) {
+            mid = (start + end) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            }
+            //前半部分有序，注意此处用小于等于
+            if (nums[start] <= nums[mid]) {
+                //target在前半部分
+                if (nums[start] <= target && target < nums[mid]) {
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            } else {
+                if (nums[mid] < target && target <= nums[end]) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
 }

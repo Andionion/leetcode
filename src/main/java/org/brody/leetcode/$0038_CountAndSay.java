@@ -36,37 +36,37 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0038_CountAndSay {
-	public static String countAndSay(int n) {
-		//循环，举个例子，从4-5分析，4=1211，=>1=11, 2=12, 11=21
+    public static String countAndSay(int n) {
+        //循环，举个例子，从4-5分析，4=1211，=>1=11, 2=12, 11=21
 
-		String str = "1";
-		for (int i = 2; i <= n; i++) {
-			StringBuilder stringBuilder = new StringBuilder();
+        String str = "1";
+        for (int i = 2; i <= n; i++) {
+            StringBuilder stringBuilder = new StringBuilder();
 
-			//前面一个数字
-			char pre = str.charAt(0);
-			int count = 1;
-			for (int j = 1; j < str.length(); j++) {
-				char c = str.charAt(j);
-				if (pre == c) {
-					count++;
-				} else {
-					stringBuilder.append(count).append(pre);
-					pre = c;
-					count = 1;
-				}
-			}
-			stringBuilder.append(count).append(pre);
-			str = stringBuilder.toString();
-		}
+            //前面一个数字
+            char pre = str.charAt(0);
+            int count = 1;
+            for (int j = 1; j < str.length(); j++) {
+                char c = str.charAt(j);
+                if (pre == c) {
+                    count++;
+                } else {
+                    stringBuilder.append(count).append(pre);
+                    pre = c;
+                    count = 1;
+                }
+            }
+            stringBuilder.append(count).append(pre);
+            str = stringBuilder.toString();
+        }
 
-		return str;
-	}
+        return str;
+    }
 
-	public static void main(String[] args) {
-		int n = 30;
-		System.out.println(countAndSay(n));
-	}
+    public static void main(String[] args) {
+        int n = 30;
+        System.out.println(countAndSay(n));
+    }
 }
 
 

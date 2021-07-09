@@ -21,29 +21,29 @@ package org.brody.leetcode;
  */
 public class $0042_TrappingRainWater {
 
-	public int trap(int[] height) {
-		//从列开始求
-		int sum = 0;
-		int len = height.length;
-		int[] maxLeft = new int[len];
-		int[] maxRight = new int[len];
+    public int trap(int[] height) {
+        //从列开始求
+        int sum = 0;
+        int len = height.length;
+        int[] maxLeft = new int[len];
+        int[] maxRight = new int[len];
 
-		//代表第i列左边最高的墙的高度
-		for (int i = 1; i < len - 1; i++) {
-			maxLeft[i] = Math.max(maxLeft[i - 1], height[i - 1]);
-		}
+        //代表第i列左边最高的墙的高度
+        for (int i = 1; i < len - 1; i++) {
+            maxLeft[i] = Math.max(maxLeft[i - 1], height[i - 1]);
+        }
 
-		//代表第i列右边最高的墙的高度
-		for (int i = len - 2; i >= 0; i--) {
-			maxRight[i] = Math.max(maxRight[i + 1], height[i + 1]);
-		}
+        //代表第i列右边最高的墙的高度
+        for (int i = len - 2; i >= 0; i--) {
+            maxRight[i] = Math.max(maxRight[i + 1], height[i + 1]);
+        }
 
-		for (int i = 1; i < len - 1; i++) {
-			int min = Math.min(maxLeft[i], maxRight[i]);
-			if (min > height[i]) {
-				sum += (min - height[i]);
-			}
-		}
-		return sum;
-	}
+        for (int i = 1; i < len - 1; i++) {
+            int min = Math.min(maxLeft[i], maxRight[i]);
+            if (min > height[i]) {
+                sum += (min - height[i]);
+            }
+        }
+        return sum;
+    }
 }

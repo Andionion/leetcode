@@ -24,19 +24,19 @@ package org.brody.leetcode;
  */
 public class $0303_RangeSumQuery {
 
-	private int[] sum;
+    private int[] sum;
 
-	public $0303_RangeSumQuery(int[] nums) {
-		sum = new int[nums.length + 1];
-		for (int i = 0; i < nums.length; i++) {
-			sum[i + 1] = sum[i] + nums[i];
-		}
-	}
+    public $0303_RangeSumQuery(int[] nums) {
+        sum = new int[nums.length + 1];
+        for (int i = 0; i < nums.length; i++) {
+            sum[i + 1] = sum[i] + nums[i];
+        }
+    }
 
-	/**
-	 * 假设我们记sum[k]为nums[0...k-1]的累积和，则sumRange(i,j)=sum[j+1]-sum[i]
-	 */
-	public int sumRange(int i, int j) {
-		return sum[j + 1] - sum[i];
-	}
+    /**
+     * 假设我们记sum[k]为nums[0...k-1]的累积和，则sumRange(i,j)=sum[j+1]-sum[i]
+     */
+    public int sumRange(int i, int j) {
+        return sum[j + 1] - sum[i];
+    }
 }

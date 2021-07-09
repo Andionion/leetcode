@@ -32,14 +32,14 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0070_ClimbStairs {
-	public int climbStairs(int n) {
-		//记dp[i]为爬到第i层阶梯的方法数量，则可以从第i-1层爬上，也可以从第i-2层爬上，则dp[i]=dp[i-1]+dp[i-2]
-		int[] dp = new int[n + 1];
-		dp[0] = 1;
-		dp[1] = 1;
-		for (int i = 2; i < n + 1; i++) {
-			dp[i] = dp[i - 1] + dp[i - 2];
-		}
-		return dp[n];
-	}
+    public int climbStairs(int n) {
+        //记dp[i]为爬到第i层阶梯的方法数量，则可以从第i-1层爬上，也可以从第i-2层爬上，则dp[i]=dp[i-1]+dp[i-2]
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i < n + 1; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
 }

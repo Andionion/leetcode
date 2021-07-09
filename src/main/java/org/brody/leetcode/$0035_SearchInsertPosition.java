@@ -30,24 +30,24 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0035_SearchInsertPosition {
-	public int searchInsert(int[] nums, int target) {
-		int len = nums.length;
-		if (len == 0) {
-			return 0;
-		}
+    public int searchInsert(int[] nums, int target) {
+        int len = nums.length;
+        if (len == 0) {
+            return 0;
+        }
 
-		int left = 0;
-		int right = len;
+        int left = 0;
+        int right = len;
 
-		while (left < right) {
-			int mid = (left + right) >>> 1;
-			if (nums[mid] < target) {
-				left = mid + 1;
-			} else {
-				right = mid;
-			}
-		}
+        while (left < right) {
+            int mid = (left + right) >>> 1;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
 
-		return left;
-	}
+        return left;
+    }
 }

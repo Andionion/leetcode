@@ -32,15 +32,15 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0027_RemoveElement {
-	public int removeElement(int[] nums, int val) {
-		//遍历nums，把所有不等于val的挑出来重新写入nums
-		int ans = 0;
-		for (int num : nums) {
-			if (num != val) {
-				nums[ans] = num;
-				ans++;
-			}
-		}
-		return ans;
-	}
+    public int removeElement(int[] nums, int val) {
+        //遍历nums，把所有不等于val的挑出来重新写入nums
+        int ans = 0;
+        for (int num : nums) {
+            if (num != val) {
+                nums[ans] = num;
+                ans++;
+            }
+        }
+        return ans;
+    }
 }

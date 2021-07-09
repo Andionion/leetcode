@@ -29,42 +29,42 @@ import java.util.List;
  */
 public class $0046_Permutations {
 
-	public List<List<Integer>> permute(int[] nums) {
-		List<List<Integer>> res = new ArrayList<>();
-		//已访问的数字记为1
-		int[] visited = new int[nums.length];
-		backtrack(res, nums, new ArrayList<Integer>(), visited);
-		return res;
-	}
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3};
+        $0046_Permutations solution = new $0046_Permutations();
+        List<List<Integer>> permute = solution.permute(nums);
+        for (List<Integer> integerList : permute) {
+            System.out.println(integerList);
+        }
+    }
 
-	private void backtrack(List<List<Integer>> res, int[] nums, ArrayList<Integer> temp, int[] visited) {
-		//回溯跳出条件，当遍历完所有数字，返回
-		if (temp.size() == nums.length) {
-			res.add(new ArrayList<>(temp));
-			return;
-		}
-		for (int i = 0; i < nums.length; i++) {
-			//若当前数字已经被使用，continue
-			if (visited[i] == 1) {
-				continue;
-			}
-			visited[i] = 1;
-			temp.add(nums[i]);
-			backtrack(res, nums, temp, visited);
-			//则回溯
-			visited[i] = 0;
-			temp.remove(temp.size() - 1);
-		}
-	}
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        //已访问的数字记为1
+        int[] visited = new int[nums.length];
+        backtrack(res, nums, new ArrayList<>(), visited);
+        return res;
+    }
 
-	public static void main(String[] args) {
-		int[] nums = {1, 2, 3};
-		$0046_Permutations solution = new $0046_Permutations();
-		List<List<Integer>> permute = solution.permute(nums);
-		for (List<Integer> integerList : permute) {
-			System.out.println(integerList);
-		}
-	}
+    private void backtrack(List<List<Integer>> res, int[] nums, ArrayList<Integer> temp, int[] visited) {
+        //回溯跳出条件，当遍历完所有数字，返回
+        if (temp.size() == nums.length) {
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            //若当前数字已经被使用，continue
+            if (visited[i] == 1) {
+                continue;
+            }
+            visited[i] = 1;
+            temp.add(nums[i]);
+            backtrack(res, nums, temp, visited);
+            //则回溯
+            visited[i] = 0;
+            temp.remove(temp.size() - 1);
+        }
+    }
 
 
 }

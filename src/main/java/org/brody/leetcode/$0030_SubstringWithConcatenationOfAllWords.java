@@ -36,44 +36,44 @@ import java.util.Map;
  * @author CYF
  */
 public class $0030_SubstringWithConcatenationOfAllWords {
-	public List<Integer> findSubstring(String s, String[] words) {
-		List<Integer> res = new ArrayList<>();
-		int wordNum = words.length;
-		if (wordNum == 0) {
-			return res;
-		}
-		int wordLen = words[0].length();
-		//HashMap1存储所有单词
-		Map<String, Integer> allWords = new HashMap<>(16);
-		for (String word : words) {
-			int value = allWords.getOrDefault(word, 0);
-			allWords.put(word, value + 1);
-		}
-		//遍历所有子串
-		for (int i = 0; i < s.length() - wordLen * wordNum + 1; i++) {
-			//HashMap2存当前扫描的字符串含有的单词
-			Map<String, Integer> hasWords = new HashMap<>(16);
-			int num = 0;
-			//判断子串是否符合
-			while (num < wordNum) {
-				String word = s.substring(i + num * wordLen, i + (num + 1) * wordLen);
-				//判断该单词在HashMap1中
-				if (allWords.containsKey(word)) {
-					int value = hasWords.getOrDefault(word, 0);
-					hasWords.put(word, value + 1);
-					//判断当前单词的value和HashMap1中该单词的value
-					if (hasWords.get(word) > allWords.get(word)) {
-						break;
-					}
-				} else {
-					break;
-				}
-				num++;
-			}
-			if (num == wordNum) {
-				res.add(i);
-			}
-		}
-		return res;
-	}
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> res = new ArrayList<>();
+        int wordNum = words.length;
+        if (wordNum == 0) {
+            return res;
+        }
+        int wordLen = words[0].length();
+        //HashMap1存储所有单词
+        Map<String, Integer> allWords = new HashMap<>(16);
+        for (String word : words) {
+            int value = allWords.getOrDefault(word, 0);
+            allWords.put(word, value + 1);
+        }
+        //遍历所有子串
+        for (int i = 0; i < s.length() - wordLen * wordNum + 1; i++) {
+            //HashMap2存当前扫描的字符串含有的单词
+            Map<String, Integer> hasWords = new HashMap<>(16);
+            int num = 0;
+            //判断子串是否符合
+            while (num < wordNum) {
+                String word = s.substring(i + num * wordLen, i + (num + 1) * wordLen);
+                //判断该单词在HashMap1中
+                if (allWords.containsKey(word)) {
+                    int value = hasWords.getOrDefault(word, 0);
+                    hasWords.put(word, value + 1);
+                    //判断当前单词的value和HashMap1中该单词的value
+                    if (hasWords.get(word) > allWords.get(word)) {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+                num++;
+            }
+            if (num == wordNum) {
+                res.add(i);
+            }
+        }
+        return res;
+    }
 }

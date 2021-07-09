@@ -26,46 +26,46 @@ import java.util.Arrays;
  * @author CYF
  */
 public class $0034_FindFirstAndLastPositionOfElementInSortedArray {
-	public static int[] searchRange(int[] nums, int target) {
-		if (nums == null || nums.length == 0) {
-			return new int[]{-1, -1};
-		}
+    public static int[] searchRange(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return new int[]{-1, -1};
+        }
 
-		//因为是排序过的nums，所以先找到target位置，然后向后遍历，找到最后一个位置
-		int length = nums.length;
-		int firstIndex = -1;
-		int lastIndex = -1;
-		int left = 0;
-		int right = length - 1;
-		int mid;
-		while (left <= right) {
-			mid = (left + right) / 2;
-			if (nums[mid] == target) {
-				int temp = mid;
-				firstIndex = mid;
-				lastIndex = mid;
-				//向左向右遍历，找到下标，要在[left,right]范围内遍历
-				while (mid > left && nums[mid] == nums[mid - 1]) {
-					mid--;
-					firstIndex = mid;
-				}
-				while (temp < right && nums[temp] == nums[temp + 1]) {
-					temp++;
-					lastIndex = temp;
-				}
-				break;
-			} else if (nums[mid] < target) {
-				left = mid + 1;
-			} else if (nums[mid] > target) {
-				right = mid - 1;
-			}
-		}
-		return new int[]{firstIndex, lastIndex};
-	}
+        //因为是排序过的nums，所以先找到target位置，然后向后遍历，找到最后一个位置
+        int length = nums.length;
+        int firstIndex = -1;
+        int lastIndex = -1;
+        int left = 0;
+        int right = length - 1;
+        int mid;
+        while (left <= right) {
+            mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                int temp = mid;
+                firstIndex = mid;
+                lastIndex = mid;
+                //向左向右遍历，找到下标，要在[left,right]范围内遍历
+                while (mid > left && nums[mid] == nums[mid - 1]) {
+                    mid--;
+                    firstIndex = mid;
+                }
+                while (temp < right && nums[temp] == nums[temp + 1]) {
+                    temp++;
+                    lastIndex = temp;
+                }
+                break;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            }
+        }
+        return new int[]{firstIndex, lastIndex};
+    }
 
-	public static void main(String[] args) {
-		int[] nums = {1};
-		int target = 1;
-		System.out.println(Arrays.toString(searchRange(nums, target)));
-	}
+    public static void main(String[] args) {
+        int[] nums = {1};
+        int target = 1;
+        System.out.println(Arrays.toString(searchRange(nums, target)));
+    }
 }

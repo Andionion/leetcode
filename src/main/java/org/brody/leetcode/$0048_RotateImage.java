@@ -54,34 +54,34 @@ import java.util.Arrays;
  */
 public class $0048_RotateImage {
 
-	public void rotate(int[][] matrix) {
-		//先转置矩阵，再翻转每一行
-		int n = matrix.length;
-		for (int i = 0; i < n; i++) {
-			for (int j = i; j < n; j++) {
-				int temp = matrix[i][j];
-				matrix[i][j] = matrix[j][i];
-				matrix[j][i] = temp;
-			}
-		}
+    public static void main(String[] args) {
+        $0048_RotateImage solution = new $0048_RotateImage();
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        solution.rotate(matrix);
+        for (int[] nums : matrix) {
+            System.out.println(Arrays.toString(nums));
+        }
+    }
 
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n / 2; j++) {
-				int temp = matrix[i][j];
-				matrix[i][j] = matrix[i][n - j - 1];
-				matrix[i][n - j - 1] = temp;
-			}
-		}
-	}
+    public void rotate(int[][] matrix) {
+        //先转置矩阵，再翻转每一行
+        int n = matrix.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
 
-	public static void main(String[] args) {
-		$0048_RotateImage solution = new $0048_RotateImage();
-		int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-		solution.rotate(matrix);
-		for (int[] nums : matrix) {
-			System.out.println(Arrays.toString(nums));
-		}
-	}
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n / 2; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[i][n - j - 1];
+                matrix[i][n - j - 1] = temp;
+            }
+        }
+    }
 }
 
 

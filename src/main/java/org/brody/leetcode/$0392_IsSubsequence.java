@@ -31,17 +31,17 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0392_IsSubsequence {
-	public boolean isSubsequence(String s, String t) {
-		int i = 0;
-		for (char c : s.toCharArray()) {
-			int j = t.indexOf(c, i);
-			if (j == -1) {
-				return false;
-			}
-			i = j + 1;
-		}
-		return true;
-	}
+    public boolean isSubsequence(String s, String t) {
+        int i = 0;
+        for (char c : s.toCharArray()) {
+            int j = t.indexOf(c, i);
+            if (j == -1) {
+                return false;
+            }
+            i = j + 1;
+        }
+        return true;
+    }
 
 	/*public boolean isSubsequence(String s, String t) {
 

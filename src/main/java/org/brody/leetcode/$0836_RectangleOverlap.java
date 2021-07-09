@@ -31,19 +31,19 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0836_RectangleOverlap {
-	public static boolean isRectangleOverlap(int[] rec1, int[] rec2) {
-		// 如果不相交，一共分为四种情况
-		// 1. rec1在rec2左侧，即rec1[2] <= rec2[0]
-		// 2. rec1在rec2右侧，即rec1[0] >= rec2[2]
-		// 3. rec1在rec2上方，即rec1[1] >= rec2[3]
-		// 4. rec1在rec2下方，即rec1[3] <= rec2[1]
-		return !(rec1[2] <= rec2[0] || rec1[0] >= rec2[2] || rec1[1] >= rec2[3] || rec1[3] <= rec2[1]);
-	}
+    public static boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+        // 如果不相交，一共分为四种情况
+        // 1. rec1在rec2左侧，即rec1[2] <= rec2[0]
+        // 2. rec1在rec2右侧，即rec1[0] >= rec2[2]
+        // 3. rec1在rec2上方，即rec1[1] >= rec2[3]
+        // 4. rec1在rec2下方，即rec1[3] <= rec2[1]
+        return !(rec1[2] <= rec2[0] || rec1[0] >= rec2[2] || rec1[1] >= rec2[3] || rec1[3] <= rec2[1]);
+    }
 
 
-	public static void main(String[] args) {
-		int[] rec1 = {0, 0, 2, 2};
-		int[] rec2 = {1, 1, 3, 3};
-		System.out.println(isRectangleOverlap(rec1, rec2));
-	}
+    public static void main(String[] args) {
+        int[] rec1 = {0, 0, 2, 2};
+        int[] rec2 = {1, 1, 3, 3};
+        System.out.println(isRectangleOverlap(rec1, rec2));
+    }
 }

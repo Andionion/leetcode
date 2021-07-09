@@ -12,6 +12,11 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class PalindromeNumber {
+    public static void main(String[] args) {
+        PalindromeNumber solution = new PalindromeNumber();
+        System.out.println(solution.isPalindrome(-10));
+    }
+
     public boolean isPalindrome(int x) {
         if (x < 0) {
             return false;
@@ -30,10 +35,5 @@ public class PalindromeNumber {
         }
 
         return true;
-    }
-
-    public static void main(String[] args) {
-        PalindromeNumber solution = new PalindromeNumber();
-        System.out.println(solution.isPalindrome(-10));
     }
 }

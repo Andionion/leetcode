@@ -27,38 +27,38 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0029_DivideTwoIntegers {
-	public static int divide(int dividend, int divisor) {
-		//把除数和被除数转为负数来计算，因为负数边界的绝对值比正数大，负数变成正数会越界，但是正数变成负数不会越界
-		if (dividend == Integer.MIN_VALUE && divisor == -1) {
-			return Integer.MAX_VALUE;
-		}
-		//1表示正数，-1表示负数
-		int flag = 1;
-		if (dividend > 0) {
-			dividend = -dividend;
-		} else {
-			flag = -flag;
-		}
+    public static int divide(int dividend, int divisor) {
+        //把除数和被除数转为负数来计算，因为负数边界的绝对值比正数大，负数变成正数会越界，但是正数变成负数不会越界
+        if (dividend == Integer.MIN_VALUE && divisor == -1) {
+            return Integer.MAX_VALUE;
+        }
+        //1表示正数，-1表示负数
+        int flag = 1;
+        if (dividend > 0) {
+            dividend = -dividend;
+        } else {
+            flag = -flag;
+        }
 
-		if (divisor > 0) {
-			divisor = -divisor;
-		} else {
-			flag = -flag;
-		}
+        if (divisor > 0) {
+            divisor = -divisor;
+        } else {
+            flag = -flag;
+        }
 
-		int s = 0, temp, k;
-		while (dividend <= divisor) {
-			temp = divisor;
-			k = 1;
-			//类似于位运算，都是2的n次方多项式，每一次的k都是当前2的n次方的值，n不断减小，系数都是除数。
-			while (dividend <= temp + temp && temp + temp < 0) {
-				temp += temp;
-				k += k;
-			}
-			s += k;
-			dividend -= temp;
-		}
+        int s = 0, temp, k;
+        while (dividend <= divisor) {
+            temp = divisor;
+            k = 1;
+            //类似于位运算，都是2的n次方多项式，每一次的k都是当前2的n次方的值，n不断减小，系数都是除数。
+            while (dividend <= temp + temp && temp + temp < 0) {
+                temp += temp;
+                k += k;
+            }
+            s += k;
+            dividend -= temp;
+        }
 
-		return flag > 0 ? s : -s;
-	}
+        return flag > 0 ? s : -s;
+    }
 }

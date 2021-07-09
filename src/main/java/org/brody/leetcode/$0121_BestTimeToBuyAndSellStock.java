@@ -30,28 +30,28 @@ package org.brody.leetcode;
 public class $0121_BestTimeToBuyAndSellStock {
 
 
-	/**
-	 * 寻找谷和峰
-	 */
-	public int maxProfit(int[] prices) {
-		int min = Integer.MAX_VALUE;
-		int maxProfile = 0;
-		for (int i = 0; i < prices.length; i++) {
-			//寻找波谷，如果此时的值比此时的波谷大，判断是否大于最大利润，若是，则更新最大利润
-			if (prices[i] < min) {
-				min = prices[i];
-			} else if (prices[i] - min > maxProfile) {
-				maxProfile = prices[i] - min;
-			}
-		}
-		return maxProfile;
-	}
+    /**
+     * 寻找谷和峰
+     */
+    public int maxProfit(int[] prices) {
+        int min = Integer.MAX_VALUE;
+        int maxProfile = 0;
+        for (int i = 0; i < prices.length; i++) {
+            //寻找波谷，如果此时的值比此时的波谷大，判断是否大于最大利润，若是，则更新最大利润
+            if (prices[i] < min) {
+                min = prices[i];
+            } else if (prices[i] - min > maxProfile) {
+                maxProfile = prices[i] - min;
+            }
+        }
+        return maxProfile;
+    }
 
 
-	/**
-	 * 这是一个最大连续子数组和的问题，牛顿莱布尼茨公式可知，区间和可以转化为求差的问题，求差问题也可以转换为区间和问题
-	 * 最大连续字数和可以用动态规划求解，dp[i]表示以i结尾的最大连续子数组和，递推公式为 dp[i]=max(0, dp[i-1]+diff[i]);
-	 */
+    /**
+     * 这是一个最大连续子数组和的问题，牛顿莱布尼茨公式可知，区间和可以转化为求差的问题，求差问题也可以转换为区间和问题
+     * 最大连续字数和可以用动态规划求解，dp[i]表示以i结尾的最大连续子数组和，递推公式为 dp[i]=max(0, dp[i-1]+diff[i]);
+     */
 	/*public int maxProfit(int[] prices) {
 		//last为最大连续子树和，profile为最大利润
 		int last = 0, profile = 0;

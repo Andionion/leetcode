@@ -26,39 +26,39 @@ import java.util.List;
  */
 public class $0047_PermutationsII {
 
-	public List<List<Integer>> permuteUnique(int[] nums) {
-		List<List<Integer>> res = new ArrayList<>();
-		int[] visited = new int[nums.length];
-		backtrack(res, nums, new ArrayList<Integer>(), visited);
-		return res;
-	}
+    public static void main(String[] args) {
+        int[] nums = {1, 1, 1, 2, 2};
+        $0047_PermutationsII solution = new $0047_PermutationsII();
+        List<List<Integer>> lists = solution.permuteUnique(nums);
+        for (List<Integer> list : lists) {
+            System.out.println(list);
+        }
+    }
 
-	private void backtrack(List<List<Integer>> res, int[] nums, ArrayList<Integer> temp, int[] visited) {
-		if (temp.size() == nums.length) {
-			if (!res.contains(temp)) {
-				res.add(new ArrayList<>(temp));
-				return;
-			}
-		}
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        int[] visited = new int[nums.length];
+        backtrack(res, nums, new ArrayList<>(), visited);
+        return res;
+    }
 
-		for (int i = 0; i < nums.length; i++) {
-			if (visited[i] == 1) {
-				continue;
-			}
-			visited[i] = 1;
-			temp.add(nums[i]);
-			backtrack(res, nums, temp, visited);
-			visited[i] = 0;
-			temp.remove(temp.size() - 1);
-		}
-	}
+    private void backtrack(List<List<Integer>> res, int[] nums, ArrayList<Integer> temp, int[] visited) {
+        if (temp.size() == nums.length) {
+            if (!res.contains(temp)) {
+                res.add(new ArrayList<>(temp));
+                return;
+            }
+        }
 
-	public static void main(String[] args) {
-		int[] nums = {1, 1, 1, 2, 2};
-		$0047_PermutationsII solution = new $0047_PermutationsII();
-		List<List<Integer>> lists = solution.permuteUnique(nums);
-		for (List<Integer> list : lists) {
-			System.out.println(list);
-		}
-	}
+        for (int i = 0; i < nums.length; i++) {
+            if (visited[i] == 1) {
+                continue;
+            }
+            visited[i] = 1;
+            temp.add(nums[i]);
+            backtrack(res, nums, temp, visited);
+            visited[i] = 0;
+            temp.remove(temp.size() - 1);
+        }
+    }
 }

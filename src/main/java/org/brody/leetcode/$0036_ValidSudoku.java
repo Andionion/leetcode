@@ -59,44 +59,44 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0036_ValidSudoku {
-	public boolean isValidSudoku(char[][] board) {
-		//使用了 2 进制的 9 个位数，如果是第一个数是 1，那么统计标志就是 0000000010 (二进制 1 左移 1 位)，
-		//如果第二个数是 3 那么统计标识变为 0000001010 (二进制 1 左移 3 位再加上原来的)，每次判断有没有重复就右移相应位数之后对 2 取模判断是否为1即可。
-		//判断在框里的方法是： int boxNum = i / 3 * 3 + j / 3;
-		int[] rowCnt = new int[9];
-		int[] colCnt = new int[9];
-		int[] boxCnt = new int[9];
-		int len = 9;
-		for (int i = 0; i < len; i++) {
-			for (int j = 0; j < len; j++) {
-				if ('.' == board[i][j]) {
-					continue;
-				}
-				int num = board[i][j] - '0';
-				//处理行
-				if ((rowCnt[i] >> num) % 2 == 1) {
-					return false;
-				} else {
-					rowCnt[i] += 1 << num;
-				}
+    public boolean isValidSudoku(char[][] board) {
+        //使用了 2 进制的 9 个位数，如果是第一个数是 1，那么统计标志就是 0000000010 (二进制 1 左移 1 位)，
+        //如果第二个数是 3 那么统计标识变为 0000001010 (二进制 1 左移 3 位再加上原来的)，每次判断有没有重复就右移相应位数之后对 2 取模判断是否为1即可。
+        //判断在框里的方法是： int boxNum = i / 3 * 3 + j / 3;
+        int[] rowCnt = new int[9];
+        int[] colCnt = new int[9];
+        int[] boxCnt = new int[9];
+        int len = 9;
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < len; j++) {
+                if ('.' == board[i][j]) {
+                    continue;
+                }
+                int num = board[i][j] - '0';
+                //处理行
+                if ((rowCnt[i] >> num) % 2 == 1) {
+                    return false;
+                } else {
+                    rowCnt[i] += 1 << num;
+                }
 
-				//处理列
-				if ((colCnt[j] >> num) % 2 == 1) {
-					return false;
-				} else {
-					colCnt[j] += 1 << num;
-				}
+                //处理列
+                if ((colCnt[j] >> num) % 2 == 1) {
+                    return false;
+                } else {
+                    colCnt[j] += 1 << num;
+                }
 
-				//处理框
-				int boxNum = i / 3 * 3 + j / 3;
-				if ((boxCnt[boxNum] >> num) % 2 == 1) {
-					return false;
-				} else {
-					boxCnt[boxNum] += 1 << num;
-				}
+                //处理框
+                int boxNum = i / 3 * 3 + j / 3;
+                if ((boxCnt[boxNum] >> num) % 2 == 1) {
+                    return false;
+                } else {
+                    boxCnt[boxNum] += 1 << num;
+                }
 
-			}
-		}
-		return true;
-	}
+            }
+        }
+        return true;
+    }
 }

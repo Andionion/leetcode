@@ -28,19 +28,19 @@ package org.brody.leetcode;
  */
 public class $0198_HouseRobber {
 
-	public int rob(int[] nums) {
-		//动态规划，假设最高利润为dp[n]，则dp[n] = dp[n-1]或者dp[n-2]+当前房屋的存放数字之中的最大值
-		int len = nums.length;
-		int[] dp = new int[len + 1];
-		if (len == 0) {
-			return 0;
-		}
-		dp[0] = 0;
-		dp[1] = nums[0];
-		for (int i = 2; i <= len; i++) {
-			dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
-		}
+    public int rob(int[] nums) {
+        //动态规划，假设最高利润为dp[n]，则dp[n] = dp[n-1]或者dp[n-2]+当前房屋的存放数字之中的最大值
+        int len = nums.length;
+        int[] dp = new int[len + 1];
+        if (len == 0) {
+            return 0;
+        }
+        dp[0] = 0;
+        dp[1] = nums[0];
+        for (int i = 2; i <= len; i++) {
+            dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
+        }
 
-		return dp[len];
-	}
+        return dp[len];
+    }
 }

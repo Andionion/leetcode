@@ -75,8 +75,8 @@ public class RomanToInteger {
     public static int romanToInt(String s) {
         // 将特殊构造抽出来，直接替换
         String replace = s.replace("CM", "a").replace("CD", "b")
-                                 .replace("XC", "c").replace("XL", "d")
-                                 .replace("IX", "e").replace("IV", "f");
+                .replace("XC", "c").replace("XL", "d")
+                .replace("IX", "e").replace("IV", "f");
         Map<Character, Integer> map = new HashMap<>(13);
         map.put('M', 1000);
         map.put('D', 500);

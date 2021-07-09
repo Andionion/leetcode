@@ -27,29 +27,29 @@ import java.util.Arrays;
  * @author CYF
  */
 public class $0338_CountingBits {
-	public int[] countBits(int num) {
-		//偶数二进制的最后一位一定为0，奇数二进制的最后一位一定为1
-		//若num为偶数，那么它的1的个数一定和num/2的1的个数相等，因为除以2等于往右移1位
-		//若num为奇数，那么它的1的个数 = num/2的1的个数 + 1，原因同上，往右移 1 位，最后一位1没有了
-		int[] dp = new int[num + 1];
-		if (num == 0) {
-			return new int[1];
-		}
-		if (num == 1) {
-			return new int[]{0, 1};
-		}
-		dp[0] = 0;
-		dp[1] = 1;
-		dp[2] = 1;
-		for (int i = 3; i <= num + 1; i++) {
-			dp[i] = i % 2 == 0 ? dp[i / 2] : dp[i / 2] + 1;
-		}
-		return dp;
-	}
+    public static void main(String[] args) {
+        $0338_CountingBits test = new $0338_CountingBits();
+        int[] nums = test.countBits(2);
+        System.out.println(Arrays.toString(nums));
+    }
 
-	public static void main(String[] args) {
-		$0338_CountingBits test = new $0338_CountingBits();
-		int[] nums = test.countBits(2);
-		System.out.println(Arrays.toString(nums));
-	}
+    public int[] countBits(int num) {
+        //偶数二进制的最后一位一定为0，奇数二进制的最后一位一定为1
+        //若num为偶数，那么它的1的个数一定和num/2的1的个数相等，因为除以2等于往右移1位
+        //若num为奇数，那么它的1的个数 = num/2的1的个数 + 1，原因同上，往右移 1 位，最后一位1没有了
+        int[] dp = new int[num + 1];
+        if (num == 0) {
+            return new int[1];
+        }
+        if (num == 1) {
+            return new int[]{0, 1};
+        }
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 1;
+        for (int i = 3; i <= num + 1; i++) {
+            dp[i] = i % 2 == 0 ? dp[i / 2] : dp[i / 2] + 1;
+        }
+        return dp;
+    }
 }

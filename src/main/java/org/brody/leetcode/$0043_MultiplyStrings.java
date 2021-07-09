@@ -27,7 +27,14 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0043_MultiplyStrings {
-	public String multiply(String num1, String num2) {
+    public static void main(String[] args) {
+        String num1 = "1243";
+        String num2 = "45";
+        $0043_MultiplyStrings solution = new $0043_MultiplyStrings();
+        System.out.println(solution.multiply(num1, num2));
+    }
+
+    public String multiply(String num1, String num2) {
 
 		/*
 		 num1的第i位(高位从0开始)和num2的第j位相乘的结果在乘积中的位置是[i+j, i+j+1]
@@ -49,48 +56,41 @@ public class $0043_MultiplyStrings {
                     0 5 5 3 5
         这样我们就可以单独都对每一位进行相乘计算把结果存入相应的index中
 		 **/
-		String zero = "0";
-		if (zero.equals(num1) || zero.equals(num2)) {
-			return zero;
-		}
+        String zero = "0";
+        if (zero.equals(num1) || zero.equals(num2)) {
+            return zero;
+        }
 
-		int len1 = num1.length() - 1;
-		int len2 = num2.length() - 1;
-		if (len1 < 0 || len2 < 0) {
-			return "";
-		}
+        int len1 = num1.length() - 1;
+        int len2 = num2.length() - 1;
+        if (len1 < 0 || len2 < 0) {
+            return "";
+        }
 
-		int[] mul = new int[len1 + len2 + 2];
-		for (int i = len1; i >= 0; i--) {
-			for (int j = len2; j >= 0; j--) {
-				int bitMul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
-				//判断是否有进位
-				bitMul += mul[i + j + 1];
+        int[] mul = new int[len1 + len2 + 2];
+        for (int i = len1; i >= 0; i--) {
+            for (int j = len2; j >= 0; j--) {
+                int bitMul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+                //判断是否有进位
+                bitMul += mul[i + j + 1];
 
-				mul[i + j] += bitMul / 10;
-				mul[i + j + 1] = bitMul % 10;
-			}
-		}
+                mul[i + j] += bitMul / 10;
+                mul[i + j + 1] = bitMul % 10;
+            }
+        }
 
-		int i = 0;
-		StringBuilder stringBuilder = new StringBuilder();
-		if (i < mul.length - 1 && mul[i] == 0) {
-			i++;
-		}
-		for (; i < mul.length; i++) {
-			stringBuilder.append(mul[i]);
-		}
+        int i = 0;
+        StringBuilder stringBuilder = new StringBuilder();
+        if (i < mul.length - 1 && mul[i] == 0) {
+            i++;
+        }
+        for (; i < mul.length; i++) {
+            stringBuilder.append(mul[i]);
+        }
 
-		return stringBuilder.toString();
+        return stringBuilder.toString();
 
-	}
-
-	public static void main(String[] args) {
-		String num1 = "1243";
-		String num2 = "45";
-		$0043_MultiplyStrings solution = new $0043_MultiplyStrings();
-		System.out.println(solution.multiply(num1, num2));
-	}
+    }
 }
 
 

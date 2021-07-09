@@ -37,81 +37,81 @@ import java.util.List;
  * @author CYF
  */
 public class $0051_NQueens {
-	private int[] rows;
-	/**
-	 * 横纵坐标相减，最小为-(n-1), 为防止负数下标，扩大了范围，直接加上2n
-	 */
-	private int[] hills;
-	/**
-	 * 横纵坐标相加，不会超过2n-2
-	 */
-	private int[] dales;
-	private int n;
-	private List<List<String>> output = new ArrayList<>();
-	private int[] queenPosition;
+    private int[] rows;
+    /**
+     * 横纵坐标相减，最小为-(n-1), 为防止负数下标，扩大了范围，直接加上2n
+     */
+    private int[] hills;
+    /**
+     * 横纵坐标相加，不会超过2n-2
+     */
+    private int[] dales;
+    private int n;
+    private List<List<String>> output = new ArrayList<>();
+    private int[] queenPosition;
 
-	public List<List<String>> solveNQueens(int n) {
-		this.n = n;
-		rows = new int[n];
-		hills = new int[4 * n - 1];
-		dales = new int[2 * n - 1];
-		queenPosition = new int[n];
-		backtrack(0);
-		return output;
-	}
+    public List<List<String>> solveNQueens(int n) {
+        this.n = n;
+        rows = new int[n];
+        hills = new int[4 * n - 1];
+        dales = new int[2 * n - 1];
+        queenPosition = new int[n];
+        backtrack(0);
+        return output;
+    }
 
-	private void backtrack(int row) {
-		for (int col = 0; col < n; col++) {
-			if (isNotUnderAttack(row, col)) {
-				placeQueen(row, col);
-				//如果n个皇后已经被放置完成
-				if (row + 1 == n) {
-					addSolution();
-				} else {
-					//如果没有放置完成
-					backtrack(row + 1);
-				}
-				//回溯
-				removeQueen(row, col);
-			}
-		}
-	}
+    private void backtrack(int row) {
+        for (int col = 0; col < n; col++) {
+            if (isNotUnderAttack(row, col)) {
+                placeQueen(row, col);
+                //如果n个皇后已经被放置完成
+                if (row + 1 == n) {
+                    addSolution();
+                } else {
+                    //如果没有放置完成
+                    backtrack(row + 1);
+                }
+                //回溯
+                removeQueen(row, col);
+            }
+        }
+    }
 
-	private void removeQueen(int row, int col) {
-		queenPosition[row] = 0;
-		rows[col] = 0;
-		hills[row - col + 2 * n] = 0;
-		dales[row + col] = 0;
-	}
+    private void removeQueen(int row, int col) {
+        queenPosition[row] = 0;
+        rows[col] = 0;
+        hills[row - col + 2 * n] = 0;
+        dales[row + col] = 0;
+    }
 
-	private void addSolution() {
-		List<String> solution = new ArrayList<>();
-		for (int i = 0; i < n; i++) {
-			int col = queenPosition[i];
-			StringBuilder stringBuilder = new StringBuilder();
-			for (int j = 0; j < col; j++) {
-				stringBuilder.append(".");
-			}
-			stringBuilder.append("Q");
-			for (int j = 0; j < n - col - 1; j++) {
-				stringBuilder.append(".");
-			}
-			solution.add(stringBuilder.toString());
-		}
-		output.add(solution);
-	}
+    private void addSolution() {
+        List<String> solution = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            int col = queenPosition[i];
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int j = 0; j < col; j++) {
+                stringBuilder.append(".");
+            }
+            stringBuilder.append("Q");
+            for (int j = 0; j < n - col - 1; j++) {
+                stringBuilder.append(".");
+            }
+            solution.add(stringBuilder.toString());
+        }
+        output.add(solution);
+    }
 
-	private boolean isNotUnderAttack(int row, int col) {
-		int res = rows[col] + hills[row - col + 2 * n] + dales[row + col];
-		return res == 0;
-	}
+    private boolean isNotUnderAttack(int row, int col) {
+        int res = rows[col] + hills[row - col + 2 * n] + dales[row + col];
+        return res == 0;
+    }
 
-	private void placeQueen(int row, int col) {
-		queenPosition[row] = col;
-		rows[col] = 1;
-		hills[row - col + 2 * n] = 1;
-		dales[row + col] = 1;
-	}
+    private void placeQueen(int row, int col) {
+        queenPosition[row] = col;
+        rows[col] = 1;
+        hills[row - col + 2 * n] = 1;
+        dales[row + col] = 1;
+    }
 }
 
 

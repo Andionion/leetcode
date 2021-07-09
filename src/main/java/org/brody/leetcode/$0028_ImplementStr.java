@@ -27,29 +27,29 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0028_ImplementStr {
-	public int strStr(String haystack, String needle) {
-		int len = needle.length();
-		int lenHay = haystack.length();
-		if (len == 0) {
-			return 0;
-		}
+    public int strStr(String haystack, String needle) {
+        int len = needle.length();
+        int lenHay = haystack.length();
+        if (len == 0) {
+            return 0;
+        }
 
-		if (lenHay < len) {
-			return -1;
-		}
+        if (lenHay < len) {
+            return -1;
+        }
 
-		int start = 0;
-		int end = len - 1;
-		while (end < lenHay) {
-			if (haystack.substring(start, end + 1).equals(needle)) {
-				return start;
-			}
-			start++;
-			end++;
-		}
-		return -1;
+        int start = 0;
+        int end = len - 1;
+        while (end < lenHay) {
+            if (haystack.substring(start, end + 1).equals(needle)) {
+                return start;
+            }
+            start++;
+            end++;
+        }
+        return -1;
 
-	}
+    }
 
 
 }

@@ -28,21 +28,20 @@ package org.brody.leetcode;
  */
 public class $0055_JumpGame {
 
-	public boolean canJump(int[] nums) {
-		// 从右向左遍历，如果当前坐标加上本身的数字可以到达lastPos，则将lastPos置为i
-		int lastPos = nums.length - 1;
-		for (int i = nums.length - 1; i >= 0; i--) {
-			if (i + nums[i] >= lastPos) {
-				lastPos = i;
-			}
-		}
-		return lastPos == 0;
-	}
+    public static void main(String[] args) {
+        int[] nums = {3, 2, 1, 0, 4};
+        $0055_JumpGame jumpGame = new $0055_JumpGame();
+        System.out.println(jumpGame.canJump(nums));
+    }
 
-
-	public static void main(String[] args) {
-		int[] nums = {3, 2, 1, 0, 4};
-		$0055_JumpGame jumpGame = new $0055_JumpGame();
-		System.out.println(jumpGame.canJump(nums));
-	}
+    public boolean canJump(int[] nums) {
+        // 从右向左遍历，如果当前坐标加上本身的数字可以到达lastPos，则将lastPos置为i
+        int lastPos = nums.length - 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (i + nums[i] >= lastPos) {
+                lastPos = i;
+            }
+        }
+        return lastPos == 0;
+    }
 }

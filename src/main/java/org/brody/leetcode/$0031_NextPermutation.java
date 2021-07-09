@@ -20,42 +20,42 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0031_NextPermutation {
-	public void nextPermutation(int[] nums) {
-		//使用两个指针index1和index2，遍历数组，从后往前首先判断第一个nums[i]>nums[i-1]的i值，index1指向i-1，index2指向i-2.
-		int index1 = -1, index2 = -1;
-		for (int i = nums.length - 1; i > 0; i--) {
-			if (nums[i] > nums[i - 1]) {
-				index1 = i - 1;
-				index2 = i;
-				break;
-			}
-		}
-		//当遍历完之后index1依然是-1，代表这个数字是降序的，将其翻转成升序即可
-		if (index1 == -1) {
-			up(nums, 0, nums.length - 1);
-			return;
-		}
-		//然后从index2依次向后遍历，到最后一个大于nums[index1]的位置，交换此时的nums[index1]和nums[index2]
-		for (int i = index2; i < nums.length; i++) {
-			if (nums[i] > nums[index1]) {
-				index2 = i;
-			}
-		}
-		int temp = nums[index1];
-		nums[index1] = nums[index2];
-		nums[index2] = temp;
+    public void nextPermutation(int[] nums) {
+        //使用两个指针index1和index2，遍历数组，从后往前首先判断第一个nums[i]>nums[i-1]的i值，index1指向i-1，index2指向i-2.
+        int index1 = -1, index2 = -1;
+        for (int i = nums.length - 1; i > 0; i--) {
+            if (nums[i] > nums[i - 1]) {
+                index1 = i - 1;
+                index2 = i;
+                break;
+            }
+        }
+        //当遍历完之后index1依然是-1，代表这个数字是降序的，将其翻转成升序即可
+        if (index1 == -1) {
+            up(nums, 0, nums.length - 1);
+            return;
+        }
+        //然后从index2依次向后遍历，到最后一个大于nums[index1]的位置，交换此时的nums[index1]和nums[index2]
+        for (int i = index2; i < nums.length; i++) {
+            if (nums[i] > nums[index1]) {
+                index2 = i;
+            }
+        }
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
 
-		//最后将nums[index1]之后的数字重新升序排列
-		up(nums, index1 + 1, nums.length - 1);
+        //最后将nums[index1]之后的数字重新升序排列
+        up(nums, index1 + 1, nums.length - 1);
 
 
-	}
+    }
 
-	private void up(int[] nums, int start, int end) {
-		while (start < end) {
-			int temp = nums[start];
-			nums[start++] = nums[end];
-			nums[end--] = temp;
-		}
-	}
+    private void up(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start++] = nums[end];
+            nums[end--] = temp;
+        }
+    }
 }

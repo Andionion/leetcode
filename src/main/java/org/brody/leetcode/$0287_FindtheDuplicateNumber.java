@@ -34,29 +34,29 @@ package org.brody.leetcode;
  * @author cyf
  */
 public class $0287_FindtheDuplicateNumber {
-	public static int findDuplicate(int[] nums) {
-		// 利用二分法，start 和 end 指针指向两端
-		// 按条件，如果没有重复数字小于等于 mid 的数字至多有 mid 个
-		int length = nums.length;
-		int start = 1;
-		int end = length - 1;
-		int mid;
+    public static int findDuplicate(int[] nums) {
+        // 利用二分法，start 和 end 指针指向两端
+        // 按条件，如果没有重复数字小于等于 mid 的数字至多有 mid 个
+        int length = nums.length;
+        int start = 1;
+        int end = length - 1;
+        int mid;
 
-		while (start < end) {
-			mid = start + (end - start) / 2;
-			int counter = 0;
-			for (int num : nums) {
-				if (num <= mid) {
-					counter++;
-				}
-			}
+        while (start < end) {
+            mid = start + (end - start) / 2;
+            int counter = 0;
+            for (int num : nums) {
+                if (num <= mid) {
+                    counter++;
+                }
+            }
 
-			if (counter > mid) {
-				end = mid;
-			} else {
-				start = mid + 1;
-			}
-		}
-		return start;
-	}
+            if (counter > mid) {
+                end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
 }

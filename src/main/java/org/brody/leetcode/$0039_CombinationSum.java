@@ -42,50 +42,49 @@ import java.util.List;
  */
 public class $0039_CombinationSum {
 
-	private List<List<Integer>> res = new ArrayList<>();
-	private int[] candidates;
-	private int len;
+    private List<List<Integer>> res = new ArrayList<>();
+    private int[] candidates;
+    private int len;
 
-	public List<List<Integer>> combinationSum(int[] candidates, int target) {
-		//思路：以target为根节点，每一个分支做减法，减到0或者负数的时候，剪枝。其中，减到0时，添加到结果集
-		int len = candidates.length;
-		if (len == 0) {
-			return res;
-		}
-		// 优化添加的代码1：先对数组排序，可以提前终止判断
-		Arrays.sort(candidates);
-		this.len = len;
-		this.candidates = candidates;
-		findCombinationSum(target, 0, new ArrayDeque<Integer>());
-		return res;
-	}
+    public static void main(String[] args) {
+        $0039_CombinationSum solution = new $0039_CombinationSum();
+        int[] candidates = {2, 3, 5};
+        int target = 10;
+        List<List<Integer>> lists = solution.combinationSum(candidates, target);
+        System.out.println(lists);
+    }
 
-	private void findCombinationSum(int residue, int start, ArrayDeque<Integer> pre) {
-		//如果得到0，则将结果加入到结果集中
-		if (residue == 0) {
-			res.add(new ArrayList<>(pre));
-			return;
-		}
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        //思路：以target为根节点，每一个分支做减法，减到0或者负数的时候，剪枝。其中，减到0时，添加到结果集
+        int len = candidates.length;
+        if (len == 0) {
+            return res;
+        }
+        // 优化添加的代码1：先对数组排序，可以提前终止判断
+        Arrays.sort(candidates);
+        this.len = len;
+        this.candidates = candidates;
+        findCombinationSum(target, 0, new ArrayDeque<>());
+        return res;
+    }
 
-		for (int i = start; i < len && residue - candidates[i] >= 0; i++) {
-			//当前数字入栈
-			pre.push(candidates[i]);
-			//递归调用
-			findCombinationSum(residue - candidates[i], i, pre);
-			//如果当前不符合，为负数，则弹出第一个元素
-			pre.pop();
-		}
+    private void findCombinationSum(int residue, int start, ArrayDeque<Integer> pre) {
+        //如果得到0，则将结果加入到结果集中
+        if (residue == 0) {
+            res.add(new ArrayList<>(pre));
+            return;
+        }
 
-	}
+        for (int i = start; i < len && residue - candidates[i] >= 0; i++) {
+            //当前数字入栈
+            pre.push(candidates[i]);
+            //递归调用
+            findCombinationSum(residue - candidates[i], i, pre);
+            //如果当前不符合，为负数，则弹出第一个元素
+            pre.pop();
+        }
 
-
-	public static void main(String[] args) {
-		$0039_CombinationSum solution = new $0039_CombinationSum();
-		int[] candidates = {2, 3, 5};
-		int target = 10;
-		List<List<Integer>> lists = solution.combinationSum(candidates, target);
-		System.out.println(lists);
-	}
+    }
 }
 
 

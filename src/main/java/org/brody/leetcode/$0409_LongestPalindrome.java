@@ -24,24 +24,24 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0409_LongestPalindrome {
-	/**
-	 * 创建一个大小为52的数组存放大小写字母，取偶数
-	 */
-	public int longestPalindrome(String s) {
-		int[] counter = new int[58];
+    /**
+     * 创建一个大小为52的数组存放大小写字母，取偶数
+     */
+    public int longestPalindrome(String s) {
+        int[] counter = new int[58];
 
-		for (char c : s.toCharArray()) {
-			counter[c - 'A']++;
-		}
+        for (char c : s.toCharArray()) {
+            counter[c - 'A']++;
+        }
 
-		int res = 0;
-		for (int i : counter) {
-			// 字符最多使用偶数次
-			res += i - (i & 1);
-		}
+        int res = 0;
+        for (int i : counter) {
+            // 字符最多使用偶数次
+            res += i - (i & 1);
+        }
 
-		// 如果最终的长度小于原字符串长度，说明还可以再加一个在中间
-		return res < s.length() ? res + 1 : res;
+        // 如果最终的长度小于原字符串长度，说明还可以再加一个在中间
+        return res < s.length() ? res + 1 : res;
 
-	}
+    }
 }

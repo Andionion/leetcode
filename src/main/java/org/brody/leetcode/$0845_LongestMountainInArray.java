@@ -18,30 +18,30 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0845_LongestMountainInArray {
-	public static int longestMountain(int[] nums) {
-		if (nums == null || nums.length < 3) {
-			return 0;
-		}
+    public static int longestMountain(int[] nums) {
+        if (nums == null || nums.length < 3) {
+            return 0;
+        }
 
-		int res = 0;
-		for (int i = 1; i < nums.length - 1; i++) {
-			//如果当前数字大于左右两边的数字，前指针前移和后指针后移。
-			if (nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) {
-				int l = i - 1;
-				int r = i + 1;
-				//前指针大于0，且当前数字大于前一个数字，前指针继续前移
-				while (l > 0 && nums[l] > nums[l - 1]) {
-					l--;
-				}
-				//后指针小于长度并且当前数字大于后一个数字，后指针继续后移
-				while (r < nums.length - 1 && nums[r] > nums[r + 1]) {
-					r++;
-				}
-				//更新“山脉长度”。
-				res = Math.max(res, r - l + 1);
-			}
-		}
-		return res;
-	}
+        int res = 0;
+        for (int i = 1; i < nums.length - 1; i++) {
+            //如果当前数字大于左右两边的数字，前指针前移和后指针后移。
+            if (nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) {
+                int l = i - 1;
+                int r = i + 1;
+                //前指针大于0，且当前数字大于前一个数字，前指针继续前移
+                while (l > 0 && nums[l] > nums[l - 1]) {
+                    l--;
+                }
+                //后指针小于长度并且当前数字大于后一个数字，后指针继续后移
+                while (r < nums.length - 1 && nums[r] > nums[r + 1]) {
+                    r++;
+                }
+                //更新“山脉长度”。
+                res = Math.max(res, r - l + 1);
+            }
+        }
+        return res;
+    }
 
 }

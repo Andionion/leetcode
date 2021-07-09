@@ -29,18 +29,18 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0026_RemoveDuplicatesFromSortedArray {
-	public int removeDuplicates(int[] nums) {
-		if (nums.length == 0) {
-			return 0;
-		}
-		//设定一个index为慢指针
-		int index = 0;
-		for (int i = 1; i < nums.length; i++) {
-			if (nums[i] != nums[index]) {
-				index++;
-				nums[index] = nums[i];
-			}
-		}
-		return index + 1;
-	}
+    public int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        //设定一个index为慢指针
+        int index = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[index]) {
+                index++;
+                nums[index] = nums[i];
+            }
+        }
+        return index + 1;
+    }
 }

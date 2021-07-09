@@ -31,23 +31,23 @@ package org.brody.leetcode;
  */
 public class $0746_MinCostClimbStairs {
 
-	public int minCostClimbingStairs(int[] cost) {
-		//使用动态规划，在i-1和i-2中取最小值然后加上这层阶梯耗费的cost[i]
-		int[] dp = new int[cost.length];
-		dp[0] = cost[0];
-		dp[1] = cost[1];
-		for (int i = 2; i < cost.length; i++) {
-			dp[i] = cost[i] + Math.min(dp[i - 1], dp[i - 2]);
-		}
-		return Math.min(dp[dp.length - 1], dp[dp.length - 2]);
-	}
+    public static void main(String[] args) {
+        $0746_MinCostClimbStairs test = new $0746_MinCostClimbStairs();
+        int[] cost = {10, 15, 20};
 
-	public static void main(String[] args) {
-		$0746_MinCostClimbStairs test = new $0746_MinCostClimbStairs();
-		int[] cost = {10, 15, 20};
+        System.out.println(test.minCostClimbingStairs(cost));
+    }
 
-		System.out.println(test.minCostClimbingStairs(cost));
-	}
+    public int minCostClimbingStairs(int[] cost) {
+        //使用动态规划，在i-1和i-2中取最小值然后加上这层阶梯耗费的cost[i]
+        int[] dp = new int[cost.length];
+        dp[0] = cost[0];
+        dp[1] = cost[1];
+        for (int i = 2; i < cost.length; i++) {
+            dp[i] = cost[i] + Math.min(dp[i - 1], dp[i - 2]);
+        }
+        return Math.min(dp[dp.length - 1], dp[dp.length - 2]);
+    }
 
 
 }

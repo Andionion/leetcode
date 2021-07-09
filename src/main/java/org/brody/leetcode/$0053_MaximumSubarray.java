@@ -21,18 +21,18 @@ package org.brody.leetcode;
  */
 public class $0053_MaximumSubarray {
 
-	public int maxSubArray(int[] nums) {
-		//使用动态规划，若sum+nums[i]>nums[i]，说明当前数字对结果有增益效果，若小于，说明当前数字对结果无增益效果，直接将sum置为当前数字
-		int ans = nums[0];
-		int sum = 0;
-		for (int num : nums) {
-			if (sum > 0) {
-				sum += num;
-			} else {
-				sum = num;
-			}
-			ans = Math.max(sum, ans);
-		}
-		return ans;
-	}
+    public int maxSubArray(int[] nums) {
+        //使用动态规划，若sum+nums[i]>nums[i]，说明当前数字对结果有增益效果，若小于，说明当前数字对结果无增益效果，直接将sum置为当前数字
+        int ans = nums[0];
+        int sum = 0;
+        for (int num : nums) {
+            if (sum > 0) {
+                sum += num;
+            } else {
+                sum = num;
+            }
+            ans = Math.max(sum, ans);
+        }
+        return ans;
+    }
 }

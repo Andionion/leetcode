@@ -25,28 +25,28 @@ package org.brody.leetcode;
  * @author CYF
  */
 public class $0064_MinPathSum {
-	public int minPathSum(int[][] grid) {
-		//自底向上，在原数组上更改，最后输出[0][0]点
-		//最后一列时，直接向下走，最后一行时，直接向右走，否则计算下和右最小的那个值
-		int row = grid.length;
-		int col = grid[0].length;
-		for (int i = row - 1; i >= 0; i--) {
-			for (int j = col - 1; j >= 0; j--) {
-				//最后一行时，直接向右走
-				if (i == row - 1 && j != col - 1) {
-					grid[i][j] += grid[i][j + 1];
+    public int minPathSum(int[][] grid) {
+        //自底向上，在原数组上更改，最后输出[0][0]点
+        //最后一列时，直接向下走，最后一行时，直接向右走，否则计算下和右最小的那个值
+        int row = grid.length;
+        int col = grid[0].length;
+        for (int i = row - 1; i >= 0; i--) {
+            for (int j = col - 1; j >= 0; j--) {
+                //最后一行时，直接向右走
+                if (i == row - 1 && j != col - 1) {
+                    grid[i][j] += grid[i][j + 1];
 
-				}
-				//最后一列时，直接向下走
-				else if (i != row - 1 && j == col - 1) {
-					grid[i][j] += grid[i + 1][j];
-				}
-				//否则计算下和右最小的那个值
-				else if (i != row - 1 && j != col - 1) {
-					grid[i][j] += Math.min(grid[i + 1][j], grid[i][j + 1]);
-				}
-			}
-		}
-		return grid[0][0];
-	}
+                }
+                //最后一列时，直接向下走
+                else if (i != row - 1 && j == col - 1) {
+                    grid[i][j] += grid[i + 1][j];
+                }
+                //否则计算下和右最小的那个值
+                else if (i != row - 1 && j != col - 1) {
+                    grid[i][j] += Math.min(grid[i + 1][j], grid[i][j + 1]);
+                }
+            }
+        }
+        return grid[0][0];
+    }
 }

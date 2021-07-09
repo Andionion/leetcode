@@ -31,33 +31,33 @@ package org.brody.leetcode;
  */
 public class $0050_Pow {
 
-	public static double myPow(double x, int n) {
-		// 我们可以使用n的二进制表示来更好的理解问题
-		// 从最低位开始，对于第i位，如果bi=1，意味着我们要将结果累乘以pow(x,pow(2,i))
+    public static double myPow(double x, int n) {
+        // 我们可以使用n的二进制表示来更好的理解问题
+        // 从最低位开始，对于第i位，如果bi=1，意味着我们要将结果累乘以pow(x,pow(2,i))
 
-		long signNum = n;
-		if (signNum < 0) {
-			x = 1 / x;
-			signNum = -signNum;
-		}
+        long signNum = n;
+        if (signNum < 0) {
+            x = 1 / x;
+            signNum = -signNum;
+        }
 
-		double ans = 1;
-		double currentProduct = x;
+        double ans = 1;
+        double currentProduct = x;
 
-		for (long i = signNum; i > 0; i /= 2) {
-			if ((i % 2) == 1) {
-				ans *= currentProduct;
-			}
-			currentProduct *= currentProduct;
-		}
-		return ans;
-	}
+        for (long i = signNum; i > 0; i /= 2) {
+            if ((i % 2) == 1) {
+                ans *= currentProduct;
+            }
+            currentProduct *= currentProduct;
+        }
+        return ans;
+    }
 
-	public static void main(String[] args) {
-		int x = 2;
-		int n = 10;
-		System.out.println(myPow(x, n));
-	}
+    public static void main(String[] args) {
+        int x = 2;
+        int n = 10;
+        System.out.println(myPow(x, n));
+    }
 }
 
 
