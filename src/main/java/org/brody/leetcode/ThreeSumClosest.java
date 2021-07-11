@@ -18,13 +18,19 @@ import java.util.Arrays;
  *
  * @author CYF
  */
-public class $0016_ThreeSumClosest {
+public class ThreeSumClosest {
+
+    public static void main(String[] args) {
+        int target = 1;
+        int[] nums = {-1, 2, 1, -4};
+        System.out.println(threeSumClosest(nums, target));
+    }
+
     public static int threeSumClosest(int[] nums, int target) {
         //首先对数组排序
         Arrays.sort(nums);
         //ans为最小的三数之和
         int ans = nums[0] + nums[1] + nums[2];
-
         //每遍历一个值，形成固定值nums[i]，再使用前指针start指向i+1，使用后指针指向nums.length-1
         for (int i = 0; i < nums.length; i++) {
             int start = i + 1, end = nums.length - 1;

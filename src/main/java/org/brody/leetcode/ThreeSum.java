@@ -6,7 +6,8 @@ import java.util.List;
 
 /**
  * 15. 三数之和
- * 给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
+ * <p>
+ * 给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
  * <p>
  * 注意：答案中不可以包含重复的三元组。
  * <p>
@@ -21,7 +22,7 @@ import java.util.List;
  *
  * @author CYF
  */
-public class $0015_ThreeSum {
+public class ThreeSum {
     /**
      * 首先对数组进行排序，排序后固定一个数 nums[i]nums[i]，再使用左右指针指向 nums[i]nums[i]后面的两端，
      * 数字分别为 nums[L] 和 nums[R]，计算三个数的和 sum 判断是否满足为 0，满足则添加进结果集
