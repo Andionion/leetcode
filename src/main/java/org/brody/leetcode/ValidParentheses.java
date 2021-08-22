@@ -40,24 +40,30 @@ import java.util.Map;
  *
  * @author cyf
  */
-public class $0020_ValidParentheses {
+public class ValidParentheses {
+    public static void main(String[] args) {
+        ValidParentheses validParentheses = new ValidParentheses();
+        String s = "{{({[]})}}";
+        System.out.println(validParentheses.isValid(s));
+    }
+
     public boolean isValid(String s) {
         Map<Character, Character> map = new HashMap<>(3);
         map.put(')', '(');
         map.put('}', '{');
         map.put(']', '[');
-        //使用栈
+        // 使用栈
         ArrayDeque<Character> stack = new ArrayDeque<>();
         for (char c : s.toCharArray()) {
-            //如果当前的字符是右括号
+            // 如果当前的字符是右括号
             if (map.containsKey(c)) {
-                //获取堆栈的顶部元素. 如果堆栈为空, 设置虚拟值"#"
+                // 获取堆栈的顶部元素. 如果堆栈为空, 设置虚拟值"#"
                 char topElement = stack.isEmpty() ? '#' : stack.pop();
                 if (topElement != map.get(c)) {
                     return false;
                 }
             } else {
-                //如果当前的字符是左括号, 入栈
+                // 如果当前的字符是左括号, 入栈
                 stack.push(c);
             }
         }
