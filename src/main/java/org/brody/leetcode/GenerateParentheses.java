@@ -23,32 +23,33 @@ import java.util.List;
  *
  * @author CYF
  */
-public class $0022_GenerateParentheses {
+public class GenerateParentheses {
     public static List<String> generateParentheses(int n) {
-        //回溯法意味着，每一次先求出一个
+        // 回溯法意味着，每一次先求出一个
         List<String> res = new ArrayList<>();
         backtrack(res, "", 0, 0, n);
         return res;
     }
 
     private static void backtrack(List<String> res, String cur, int open, int close, int max) {
-        //如果当前字符的长度为max*2，表示已经有了max个成对的括号
-        if (cur.length() == max * 2) {
+        // 结束条件，当字符串长度为 2 倍的 max 之后，意味着已经找到了成对的括号
+        if (max * 2 == cur.length()) {
             res.add(cur);
             return;
         }
 
-        //每加入一个左括号，意味着开区间又加了一个。
+        // 添加一个左括号
         if (open < max) {
             backtrack(res, cur + "(", open + 1, close, max);
         }
+        // 对左括号进行闭合
         if (close < open) {
             backtrack(res, cur + ")", open, close + 1, max);
         }
     }
 
     public static void main(String[] args) {
-        int n = 3;
+        int n = 5;
         List<String> strings = generateParentheses(n);
         for (String string : strings) {
             System.out.println(string);
