@@ -1,7 +1,5 @@
 package org.brody.leetcode;
 
-import cn.hutool.json.JSONUtil;
-import com.alibaba.fastjson.JSONObject;
 import org.brody.leetcode.base.ListNode;
 
 /**
@@ -40,7 +38,7 @@ public class MergeTwoSortedLists {
         ListNode l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
         MergeTwoSortedLists mergeTwoSortedLists = new MergeTwoSortedLists();
         ListNode listNode = mergeTwoSortedLists.mergeTwoLists(l1, l2);
-        System.out.println(JSONUtil.formatJsonStr(JSONObject.toJSONString(listNode)));
+        System.out.println(listNode);
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

@@ -20,4 +20,13 @@ public class ListNode {
         this.val = val;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder(String.valueOf(val));
+        while (next != null) {
+            str.append("->").append(next.val);
+            next = next.next;
+        }
+        return str.toString();
+    }
 }

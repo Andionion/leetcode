@@ -22,9 +22,23 @@ import org.brody.leetcode.base.ListNode;
  *
  * @author CYF
  */
-public class $0023_MergeKSortedLists {
-    public ListNode mergeKLists(ListNode[] lists) {
-        //采用分治法，将 K 个链表先划分为 K/2 个链表，处理它们的合并，然后不停的向下划分，直到划分成只有一个或两个链表的任务，开始合并
+public class MergeSortedLists {
+
+    public static void main(String[] args) {
+        ListNode listNode1 = new ListNode(1, new ListNode(4, new ListNode(5)));
+        ListNode listNode2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+        ListNode listNode3 = new ListNode(2, new ListNode(6));
+        ListNode[] lists = new ListNode[3];
+        lists[0] = listNode1;
+        lists[1] = listNode2;
+        lists[2] = listNode3;
+        MergeSortedLists mergeSortedLists = new MergeSortedLists();
+        ListNode listNode = mergeSortedLists.mergeSortedLists(lists);
+        System.out.println(listNode);
+    }
+
+    public ListNode mergeSortedLists(ListNode[] lists) {
+        // 采用分治法，将 K 个链表先划分为 K/2 个链表，处理它们的合并，然后不停的向下划分，直到划分成只有一个或两个链表的任务，开始合并
         if (lists.length == 0) {
             return null;
         }
@@ -39,7 +53,7 @@ public class $0023_MergeKSortedLists {
         ListNode[] right = new ListNode[lists.length - mid];
         System.arraycopy(lists, mid, right, 0, lists.length - mid);
 
-        return mergeTwoLists(mergeKLists(left), mergeKLists(right));
+        return mergeTwoLists(mergeSortedLists(left), mergeSortedLists(right));
 
     }
 
@@ -54,7 +68,7 @@ public class $0023_MergeKSortedLists {
             return l1;
         }
 
-        ListNode head = null;
+        ListNode head;
         if (l1.val <= l2.val) {
             head = l1;
             head.next = mergeTwoLists(l1.next, l2);

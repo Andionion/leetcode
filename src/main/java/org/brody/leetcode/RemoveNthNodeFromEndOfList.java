@@ -1,7 +1,5 @@
 package org.brody.leetcode;
 
-import cn.hutool.json.JSONUtil;
-import com.alibaba.fastjson.JSONObject;
 import org.brody.leetcode.base.ListNode;
 
 /**
@@ -26,8 +24,7 @@ public class RemoveNthNodeFromEndOfList {
         ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
         int n = 2;
         ListNode listNode1 = removeNthNodeFromEndOfList.removeNthFromEnd(listNode, n);
-        System.out.println(JSONObject.toJSONString(listNode1));
-        System.out.println(JSONUtil.formatJsonStr(JSONObject.toJSONString(listNode1)));
+        System.out.println(listNode1);
     }
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
