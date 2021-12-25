@@ -1,6 +1,8 @@
 package org.brody.leetcode.base;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 二叉树结点
@@ -8,6 +10,8 @@ import lombok.Data;
  * @author CYF
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class TreeNode {
     public int val;
     /**

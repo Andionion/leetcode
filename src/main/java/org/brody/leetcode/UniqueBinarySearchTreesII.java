@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author CYF
  */
-public class $0095_UniqueBinarySearchTreesII {
+public class UniqueBinarySearchTreesII {
     public List<TreeNode> generateTrees(int n) {
         List<TreeNode> ans = new ArrayList<>();
         if (n == 0) {
