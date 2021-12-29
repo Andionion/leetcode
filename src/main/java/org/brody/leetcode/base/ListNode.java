@@ -20,6 +20,20 @@ public class ListNode {
         this.val = val;
     }
 
+    public static ListNode create(int[] vals) {
+        if (vals == null || vals.length == 0) {
+            return null;
+        }
+        ListNode head = new ListNode();
+        ListNode cur;
+        cur = head;
+        for (int val : vals) {
+            cur.next = new ListNode(val);
+            cur = cur.next;
+        }
+        return head;
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder(String.valueOf(val));
