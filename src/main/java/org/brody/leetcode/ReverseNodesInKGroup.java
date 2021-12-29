@@ -81,7 +81,7 @@ public class ReverseNodesInKGroup {
     public static void main(String[] args) {
         ReverseNodesInKGroup reverseNodesInKGroup = new ReverseNodesInKGroup();
         int[] vals = {1, 2, 3, 4, 5};
-        ListNode listNode = ListNode.create(vals);
+        ListNode listNode = new ListNode(vals);
         System.out.println(listNode);
         ListNode listNode1 = reverseNodesInKGroup.reverseKGroup(listNode, 2);
         System.out.println(listNode1);

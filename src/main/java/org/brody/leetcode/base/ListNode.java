@@ -20,18 +20,17 @@ public class ListNode {
         this.val = val;
     }
 
-    public static ListNode create(int[] vals) {
+    public ListNode(int[] vals) {
         if (vals == null || vals.length == 0) {
-            return null;
+            return;
         }
-        ListNode head = new ListNode();
-        ListNode cur;
-        cur = head;
-        for (int val : vals) {
+        val = vals[0];
+        ListNode cur = this;
+        for (int i = 1, valsLength = vals.length; i < valsLength; i++) {
+            int val = vals[i];
             cur.next = new ListNode(val);
             cur = cur.next;
         }
-        return head.next;
     }
 
     @Override
