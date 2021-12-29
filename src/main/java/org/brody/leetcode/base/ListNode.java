@@ -31,7 +31,7 @@ public class ListNode {
             cur.next = new ListNode(val);
             cur = cur.next;
         }
-        return head;
+        return head.next;
     }
 
     @Override
