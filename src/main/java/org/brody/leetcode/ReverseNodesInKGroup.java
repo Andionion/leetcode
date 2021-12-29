@@ -79,12 +79,13 @@ public class ReverseNodesInKGroup {
     }
 
     public static void main(String[] args) {
-        ReverseNodesInKGroup reverseNodes = new ReverseNodesInKGroup();
-        ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
+        ReverseNodesInKGroup reverseNodesInKGroup = new ReverseNodesInKGroup();
+        int[] vals = {1, 2, 3, 4, 5};
+        ListNode listNode = ListNode.create(vals);
         System.out.println(listNode);
-        ListNode listNode1 = reverseNodes.reverseKGroup(listNode, 2);
+        ListNode listNode1 = reverseNodesInKGroup.reverseKGroup(listNode, 2);
         System.out.println(listNode1);
-        ListNode listNode2 = reverseNodes.reverseKGroup(listNode, 3);
+        ListNode listNode2 = reverseNodesInKGroup.reverseKGroup(listNode, 3);
         System.out.println(listNode2);
     }
 
