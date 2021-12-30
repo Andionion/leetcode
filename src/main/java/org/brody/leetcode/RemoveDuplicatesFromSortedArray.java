@@ -28,12 +28,12 @@ package org.brody.leetcode;
  *
  * @author CYF
  */
-public class $0026_RemoveDuplicatesFromSortedArray {
+public class RemoveDuplicatesFromSortedArray {
     public int removeDuplicates(int[] nums) {
         if (nums.length == 0) {
             return 0;
         }
-        //设定一个index为慢指针
+        // 设定一个index为慢指针
         int index = 0;
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] != nums[index]) {
@@ -42,5 +42,13 @@ public class $0026_RemoveDuplicatesFromSortedArray {
             }
         }
         return index + 1;
+    }
+
+    public static void main(String[] args) {
+        // 第一时间就想到了指针，但是没有考虑到快慢指针的问题，要记住
+        RemoveDuplicatesFromSortedArray removeDuplicatesFromSortedArray = new RemoveDuplicatesFromSortedArray();
+        int[] nums = {1, 2, 3, 4, 5, 5, 5, 6, 7};
+        int i = removeDuplicatesFromSortedArray.removeDuplicates(nums);
+        System.out.println(i);
     }
 }
