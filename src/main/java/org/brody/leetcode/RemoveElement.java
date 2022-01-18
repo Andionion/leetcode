@@ -1,5 +1,7 @@
 package org.brody.leetcode;
 
+import java.util.Arrays;
+
 /**
  * 27. 移除元素
  * 给定一个数组 nums 和一个值 val ，你需要原地移除所有数值等于  val 的元素，返回移除后数组的新长度。
@@ -31,16 +33,26 @@ package org.brody.leetcode;
  *
  * @author CYF
  */
-public class $0027_RemoveElement {
+public class RemoveElement {
+
     public int removeElement(int[] nums, int val) {
-        //遍历nums，把所有不等于val的挑出来重新写入nums
+        // 遍历数组，将所有不等于 val 的数值设置为当前值
+        // 返回的长度实际上是一个新数组的最长下标，这个新数组中不包含给定的 val
         int ans = 0;
         for (int num : nums) {
             if (num != val) {
-                nums[ans] = num;
-                ans++;
+                nums[ans++] = num;
             }
         }
         return ans;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 3, 5};
+        int val = 3;
+        RemoveElement removeElement = new RemoveElement();
+        int i = removeElement.removeElement(nums, val);
+        System.out.println(i);
+        System.out.println(Arrays.toString(nums));
     }
 }
