@@ -7,11 +7,12 @@ import java.util.Map;
 
 /**
  * 30. 串联所有单词的子串
- * 给定一个字符串 s 和一些长度相同的单词 words。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。
  * <p>
- * 注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words 中单词串联的顺序。
+ * 给定一个字符串s和一些长度相同的单词words。找出 s 中恰好可以由words 中所有单词串联形成的子串的起始位置。
  * <p>
- *  
+ * 注意子串要与words 中的单词完全匹配，中间不能有其他字符，但不需要考虑words中单词串联的顺序。
+ * <p>
+ *
  * <p>
  * 示例 1：
  * <p>
@@ -35,7 +36,7 @@ import java.util.Map;
  *
  * @author CYF
  */
-public class $0030_SubstringWithConcatenationOfAllWords {
+public class SubstringWithConcatenationOfAllWords {
     public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> res = new ArrayList<>();
         int wordNum = words.length;
@@ -43,25 +44,25 @@ public class $0030_SubstringWithConcatenationOfAllWords {
             return res;
         }
         int wordLen = words[0].length();
-        //HashMap1存储所有单词
+        // HashMap存储所有单词
         Map<String, Integer> allWords = new HashMap<>(16);
         for (String word : words) {
             int value = allWords.getOrDefault(word, 0);
             allWords.put(word, value + 1);
         }
-        //遍历所有子串
+        // 遍历所有子串
         for (int i = 0; i < s.length() - wordLen * wordNum + 1; i++) {
-            //HashMap2存当前扫描的字符串含有的单词
+            // HashMap2存当前扫描的字符串含有的单词
             Map<String, Integer> hasWords = new HashMap<>(16);
             int num = 0;
-            //判断子串是否符合
+            // 判断子串是否符合
             while (num < wordNum) {
                 String word = s.substring(i + num * wordLen, i + (num + 1) * wordLen);
-                //判断该单词在HashMap1中
+                // 判断该单词在allWords中
                 if (allWords.containsKey(word)) {
                     int value = hasWords.getOrDefault(word, 0);
                     hasWords.put(word, value + 1);
-                    //判断当前单词的value和HashMap1中该单词的value
+                    // 判断当前单词的value和HashMap1中该单词的value
                     if (hasWords.get(word) > allWords.get(word)) {
                         break;
                     }
